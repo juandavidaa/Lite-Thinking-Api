@@ -35,7 +35,7 @@ Route::middleware(['auth:api'])->group(function (){
 
     Route::prefix('admin')->middleware('admin')->group(function (){
         Route::apiResource('users', UserController::class)->only(['index', 'destroy']);
-        Route::apiResource('companies', CompanyController::class)->only(['show', 'store']);
+        Route::apiResource('companies', CompanyController::class)->only(['show', 'store', 'destroy']);
         Route::apiResource('products', ProductController::class)->only(['destroy', 'store']);
     });
 });
