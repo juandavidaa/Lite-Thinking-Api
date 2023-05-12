@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigInteger('nit')->primary();
             $table->string('name', 255);
-            $table->boolean('status');
+            $table->boolean('active')->default(true);
             $table->string('image_url');
             $table->timestamps();
         });

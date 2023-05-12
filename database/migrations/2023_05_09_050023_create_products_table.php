@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('company_nit');
             $table->timestamps();
             $table->string('name', 255);
-            $table->boolean('status');
+            $table->boolean('active')->default(true);
             $table->integer('price');
             $table->integer('quantity');
             $table->string('image_url');

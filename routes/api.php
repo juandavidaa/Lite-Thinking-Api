@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\admin\{UserController, CompanyController, ProductController};
+use App\Http\Controllers\AuthController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('auth/register', [AuthController::class, '']);
+Route::post('auth/login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware(['auth:api'])->group(function (){
+
+    Route::prefix('auth')->group(function(){
+        Route::get('logout', [AuthController::class, 'logout']);
+        Route::get('me', [AuthController::class, 'me']);
+
+    });
+
+    Route::get('companies', [CompanyController::class, 'index']);
+
+    /**
+     * Admin routes
+     */
+
+    Route::prefix('admin')->middleware('admin')->group(function (){
+        Route::apiResource('users', UserController::class)->only(['index', 'destroy']);
+        Route::apiResource('companies', CompanyController::class)->only(['show', 'store']);
+        Route::apiResource('products', ProductController::class)->only(['destroy', 'store']);
+    });
 });
+
