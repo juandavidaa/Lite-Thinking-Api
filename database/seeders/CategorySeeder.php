@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         //Create alimentos category
-        DB::table('Categories')->insert([
+        DB::table('categories')->insert([
             'name' => 'Alimentos',
             'active' => true,
         ]);

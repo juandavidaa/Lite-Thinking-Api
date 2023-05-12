@@ -13,7 +13,7 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
         // Create Alpina company
-        DB::table('Companies')->insert([
+        DB::table('companies')->insert([
             'nit' => random_int(1000000000,9999999999),
             'name' => 'Alpina',
             'active' => true,
