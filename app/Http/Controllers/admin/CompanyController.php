@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCompanyRequest;
 use App\Models\Company;
+use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 
 class CompanyController extends Controller
@@ -42,5 +43,13 @@ class CompanyController extends Controller
             return response()->json(["msg" => "Couldn't create the company"]);
         }
         return response()->json(["msg" => "Company successfully created"]);
+    }
+
+    public function destroy(Company $company):JsonResponse
+    {
+        if(!$company->delete()){
+            return response()->json(["msg" => "Couldn't delete the product"]);
+        }
+        return response()->json(["msg" => "Product successfully deleted"]);
     }
 }
