@@ -13,7 +13,7 @@
 
 header('Access-Control-Allow-Origin', '*');
 header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)

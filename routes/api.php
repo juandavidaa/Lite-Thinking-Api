@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::middleware(['cors'])->group(function (){
+
     Route::post('auth/register', [AuthController::class, 'register']);
     Route::post('auth/login', [AuthController::class, 'login'])->name('login');
 
@@ -39,5 +39,5 @@ Route::middleware(['cors'])->group(function (){
             Route::apiResource('products', ProductController::class)->only(['destroy', 'store']);
         });
     });
-});
+
 
