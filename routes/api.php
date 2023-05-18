@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
         });
 
-        Route::get('companies', [CompanyController::class, 'index']);
+        Route::get('admin/companies', [CompanyController::class, 'index']);
 
         /**
          * Admin routes
@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Route;
             Route::apiResource('users', UserController::class)->only(['index', 'destroy']);
             Route::apiResource('companies', CompanyController::class)->only(['show', 'store', 'destroy']);
             Route::apiResource('products', ProductController::class)->only(['destroy', 'store']);
+            Route::post('products/sendPDF', [ProductController::class, 'sendPDF']);
         });
     });
 
